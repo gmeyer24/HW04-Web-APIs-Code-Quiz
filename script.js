@@ -109,6 +109,7 @@ function selectOption(event) {
   var selectedButton = event.target;
   var selectedOption = selectedButton.textContent;
   console.log(selectedOption);
+
   var feedback = document.createElement("div");
   if (selectedOption === quizQuestions[currentQuestion].answer) {
     feedback.textContent = "Correct!";
@@ -119,17 +120,32 @@ function selectOption(event) {
   } else {
     console.log("incorrect");
     // show answer is incorrect
-
+    feedback.textContent = "Incorrect!";
     // subtrack time for wrong answer, 10 sec
     timeRemaining -= 10;
     // make sure time doesn't go below 0
     timeRemaining = Math.max(0, timeRemaining);
   }
+  optionsEl.appendChild(feedback);
 
-  currentQuestion++;
-  optionsEl.innerHTML = "";
-  loadQuestion();
+  // Disable button clicks after selecting an option
+  var buttons = document.querySelectorAll("#options button");
+    buttons.forEach(function(button) {
+        button.disabled = true;
+    });
+
+    // Delay for a few seconds before moving to the next question or ending the quiz
+    setTimeout(function() {
+      optionsEl.removeChild(feedback); // Remove the feedback
+      currentQuestion++;
+      optionsEl.innerHTML = ""; // Clear the options container
+      loadQuestion(); // Load the next question or end the quiz
+  }, 2000); // 2000 milliseconds (2 seconds) delay before moving to the next question
 }
+
+  // currentQuestion++;
+  // optionsEl.innerHTML = "";
+  // loadQuestion();
 
 // display final score and enter initials - stores high score in local storage
 function displayScore() {

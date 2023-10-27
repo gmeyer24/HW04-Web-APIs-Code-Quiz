@@ -48,7 +48,7 @@ header {
   border: 2px black solid;
   position: absolute;
   left: 25%;
-  bottom: 35%;
+  bottom: 25%;
 }
 
 #question {
@@ -61,7 +61,7 @@ button {
   background-color: black;
   color: white;
   display: block;
-  width: 100%;
+  width: 50%;
   text-align: center;
   cursor: pointer;
   margin: 0.5em;
@@ -83,11 +83,11 @@ button:hover {
 }
 
 #initials {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 #submit {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 footer {
