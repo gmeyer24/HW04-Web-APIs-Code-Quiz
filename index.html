@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaScript Quiz</title>
-</head>
-<body>
-    <h1>JavaScript Quiz</h1>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div id="timer">Time Left:</div>
+      <div id="highscores">View Highscores</div>
+      <!-- make the above a link href -->
+    </header>
+    <!-- Start Quiz Button -->
+    <div id="startButton"><button>START QUIZ</button></div>
+
+    <!--Quiz Box  -->
+    <div class="quizBox">
+      <section>
+        <div id="question"></div>
+        <div id="options"></div>
+      </section>
+    </div>
+
+    <!-- Result Box & Initial Box -->
+    <div id="endGame">
+        <h1>Game Summary</h1>
+      <form action="">
+        <div>
+            <label for="initials">Initials:</label>
+          <input type="text" name="initials" id="initials" required />
+          <input type="submit" value="Submit" id="submit">
+        </div>
+      </form>
+    </div>
+    <div id="playAgain">
+        <button>Play Again</button>
+    </div>
+
+    <!-- <div id="scoreBox" style="display: none">
+      <h2>Your Score: <span id="finalScore"></span></h2>
+      <label for="initials">Enter Your Initials:</label>
+      <input type="text" id="initials" />
+      <button id="submit">Submit</button>
+    </div> -->
 
     <script src="script.js"></script>
-    
-</body>
+  </body>
 </html>
