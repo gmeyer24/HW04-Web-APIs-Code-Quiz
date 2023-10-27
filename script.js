@@ -38,7 +38,7 @@ const endGameEl = document.getElementById("endGame");
 const submitButtonEl = document.getElementById("submit");
 const playAgainButtonEl = document.getElementById("playAgain");
 const timerDisplay = document.getElementById("timer-display");
-const timeLimitInSeconds = 60;
+const timeLimitInSeconds = 30;
 
 var timeRemaining = timeLimitInSeconds;
 var timerInterval;
