@@ -213,6 +213,4 @@ playAgainButtonEl.addEventListener("click", playAgain);
 
 // TO DO:
 // make game start over
-// show if answer is right or wrong when guessing
-// css sheet
 // readme doc
