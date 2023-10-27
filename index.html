@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <div id="timer">Time Left:</div>
+      <div id="timer placeholder">Time Left:  <span id="timer-display"></span></div>
       <div id="highscores">View Highscores</div>
       <!-- make the above a link href -->
     </header>
@@ -26,25 +26,18 @@
 
     <!-- Result Box & Initial Box -->
     <div id="endGame">
-        <h1>Game Summary</h1>
+      <h1>Game Summary</h1>
       <form action="">
         <div>
-            <label for="initials">Initials:</label>
+          <label for="initials">Initials:</label>
           <input type="text" name="initials" id="initials" required />
-          <input type="submit" value="Submit" id="submit">
+          <input type="submit" value="Submit" id="submit" />
         </div>
       </form>
     </div>
     <div id="playAgain">
-        <button>Play Again</button>
+      <button>Play Again</button>
     </div>
-
-    <!-- <div id="scoreBox" style="display: none">
-      <h2>Your Score: <span id="finalScore"></span></h2>
-      <label for="initials">Enter Your Initials:</label>
-      <input type="text" id="initials" />
-      <button id="submit">Submit</button>
-    </div> -->
 
     <script src="script.js"></script>
   </body>

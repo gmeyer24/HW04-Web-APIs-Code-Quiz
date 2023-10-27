@@ -25,10 +25,14 @@ const endGameEl = document.getElementById("endGame");
 // const scoreBox = document.getElementById("scoreBox");
 const submitButtonEl = document.getElementById("submit");
 const playAgainsubmiButtonEl = document.getElementById("playAgain");
+const timerDisplay = document.getElementById("timer-display");
+const timeLimitInSeconds = 60;
 
-var score =  0;
+var timeRemaining = timeLimitInSeconds;
+var timerInterval;
+
+var score = 0;
 var currentQuestion = 0;
-
 
 endGameEl.setAttribute("class", "hide");
 playAgainsubmiButtonEl.setAttribute("class", "hide");
@@ -38,8 +42,29 @@ function startQuiz() {
   var currentQuestion = 0;
   var score = 0;
   startButtonEl.setAttribute("class", "hide");
+  timerDisplay.textContent = timeRemaining;
   loadQuestion();
+  startTimer();
   console.log("Start Quiz");
+}
+
+// create timer
+function startTimer() {
+  timerInterval = setInterval(function () {
+    timeRemaining--;
+    timerDisplay.textContent = timeRemaining;
+    if (timeRemaining <= 0) {
+      clearInterval(timerInterval);
+      timeOut();
+    }
+  }, 1000);
+}
+
+function timeOut() {
+  // timer runs out
+  alert("Time's up! Quiz is over.");
+  clearInterval(timerInterval);
+  displayScore();
 }
 
 // need to create functions and methods
@@ -71,6 +96,10 @@ function selectOption(event) {
     score++;
   } else {
     console.log("incorrect");
+    // subtrack time for wrong answer, 10 sec
+    timeRemaining -= 10;
+    // make sure time doesn't go below 0
+    timeRemaining = Math.max(0, timeRemaining);
   }
   currentQuestion++;
   optionsEl.innerHTML = "";
@@ -82,6 +111,7 @@ function showResult() {}
 
 // display final score and enter initials - stores high score in local storage
 function displayScore() {
+  clearInterval(timerInterval);
   endGameEl.setAttribute("class", "visible");
   questionEl.setAttribute("class", "hide");
   optionsEl.setAttribute("class", "hide");
@@ -93,8 +123,8 @@ function displayScore() {
 }
 
 function submitScore(event) {
-  var initialsInput = document.querySelector("#initials");
   event.preventDefault();
+  var initialsInput = document.querySelector("#initials");
   console.log(initialsInput.value);
   console.log(score);
 
@@ -136,14 +166,13 @@ playAgainsubmiButtonEl.addEventListener("click", playAgain);
 // WHEN the game is over
 // THEN I can save my initials and my score
 
-
 // TO DO:
 // make game start over
 // log score to local storage and to new highscore page
 // add timer and every wrong question take away 5 secs
-// show if answer is right or wrong when guessing 
+// show if answer is right or wrong when guessing
 // css sheet
-// readme doc 
+// readme doc
 
 // create input element and submit button and apend to endGameEl
 // function submitScore(){
