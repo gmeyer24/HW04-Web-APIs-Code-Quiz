@@ -18,6 +18,7 @@ const quizQuestions = [
   },
   // add more questions here with the same format
 ];
+
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
 const startButtonEl = document.getElementById("startButton");
@@ -106,9 +107,6 @@ function selectOption(event) {
   loadQuestion();
 }
 
-// show correct answer
-function showResult() {}
-
 // display final score and enter initials - stores high score in local storage
 function displayScore() {
   clearInterval(timerInterval);
@@ -124,26 +122,35 @@ function displayScore() {
 
 function submitScore(event) {
   event.preventDefault();
-  var initialsInput = document.querySelector("#initials");
-  console.log(initialsInput.value);
+  var initialsInput = document.querySelector("#initials").value;
+  console.log(initialsInput);
   console.log(score);
+
+  var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+  highscores.push({ initials: initialsInput, score: score});
+  localStorage.setItem("highscores", JSON.stringify(highscores));
 
   endGameEl.setAttribute("class", "hide");
   playAgainsubmiButtonEl.setAttribute("class", "visible");
+
+  // redirect to highscores page if you make this active 
+  // window.location.href = "highscores.html";
 }
 
 function playAgain(event) {
   event.preventDefault();
   score = 0;
   currentQuestion = 0;
+  timeRemaining = timeLimitInSeconds;
+  clearInterval(timerInterval);
   endGameEl.setAttribute("class", "hide");
   playAgainsubmiButtonEl.setAttribute("class", "hide");
   startButtonEl.setAttribute("class", "visible");
   loadQuestion();
+  startTimer();
   console.log("Play Again");
 }
 
-function highscorePage() {}
 
 // create the timer and high score tracker - localstorage
 
@@ -173,16 +180,3 @@ playAgainsubmiButtonEl.addEventListener("click", playAgain);
 // show if answer is right or wrong when guessing
 // css sheet
 // readme doc
-
-// create input element and submit button and apend to endGameEl
-// function submitScore(){
-//     const initialsInput = document.getElementById("initial").value;
-//     // check if exisiting scores in local storage
-//     const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-//     // add the new score to the highscores list
-//     highScores.push({initialsInput, score: finalScore});
-//     // store the updated highscores list in local storage
-//     localStorage.setItem("highScores", JSON.stringify(highScores));
-
-//     window.location.href = "highscores.html";
-// };
