@@ -169,7 +169,7 @@ playAgainsubmiButtonEl.addEventListener("click", playAgain);
 // TO DO:
 // make game start over
 // log score to local storage and to new highscore page
-// add timer and every wrong question take away 5 secs
+// add timer and every wrong question take away 10 secs
 // show if answer is right or wrong when guessing
 // css sheet
 // readme doc
