@@ -9,38 +9,41 @@
   </head>
   <body>
     <header>
-      <div id="timer placeholder">Time Left:  <span id="timer-display"></span></div>
-      <a href="highscores.html">View Highscores</a>
+      <a id="viewScore" href="highscores.html">View Highscores</a>
       <!-- make the above a link href -->
+      <div id="timer">Time Left:  <span id="timer-display"></span></div>
     </header>
-    <!-- Start Quiz Button -->
-    <div id="startButton"><button>START QUIZ</button></div>
-
+    
     <!--Quiz Box  -->
     <div class="quizBox">
       <section>
+        <!-- Start Quiz Button -->
+        <div id="startButton"><button>START QUIZ</button></div>
         <div id="question"></div>
         <div id="options">
-          <!-- <button id="option1">Option 1</button>
-          <button id="option2">Option 2</button> -->
+      
+        </div>
+        <!-- Result Box & Initial Box -->
+        <div id="endGame">
+          <h1 id="summaryTitle">Game Summary</h1>
+          <form action="initials">
+            <div id="scoreBox">
+              <label for="initials">Initials:</label>
+              <input type="text" name="initials" id="initials" required/>
+              <input type="submit" value="Submit" id="submit" />
+            </div>
+          </form>
+        </div>
+        <div id="playAgain">
+          <button>Play Again</button>
         </div>
       </section>
     </div>
 
-    <!-- Result Box & Initial Box -->
-    <div id="endGame">
-      <h1>Game Summary</h1>
-      <form action="">
-        <div>
-          <label for="initials">Initials:</label>
-          <input type="text" name="initials" id="initials" required />
-          <input type="submit" value="Submit" id="submit" />
-        </div>
-      </form>
-    </div>
-    <div id="playAgain">
-      <button>Play Again</button>
-    </div>
+
+    <footer>
+      copyright by me 2023
+    </footer>
 
     <script src="script.js"></script>
   </body>

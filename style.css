@@ -1,18 +1,103 @@
 * {
-background-color:;
+  margin: ;
+}
+
+body {
+  background-color: lightgrey;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
+.correct {
+  background-color: green;
+}
 
+.incorrect {
+  background-color: red;
+}
 
+header {
+  padding: 2em;
+  background-color: aqua;
+  width: 100%;
+}
 
+#viewScore {
+  position: absolute;
+  left: 10%;
+  font-size: 25px;
+}
 
+#timer {
+  position: absolute;
+  right: 10%;
+  font-size: 25px;
+}
 
+.quizBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  text-align: center;
+  background-color: aqua;
+  height: 300px;
+  padding: 1em;
+  border: 2px black solid;
+  position: absolute;
+  left: 25%;
+  bottom: 35%;
+}
 
+#question {
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+}
 
+button {
+  background-color: black;
+  color: white;
+  display: block;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  margin: 0.5em;
+  display: inline-block;
+  font-size: 20px;
+}
 
+button:hover {
+  color: aqua;
+}
 
+#summaryTitle {
+  font-size: 50px;
+}
 
+#scoreBox {
+  font-size: 25px;
+  line-height: 3em;
+}
+
+#initials {
+  font-size: 25px;
+}
+
+#submit {
+  font-size: 25px;
+}
+
+footer {
+  background-color: aqua;
+  padding: 1em;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+/* var selectedOption = event.target.innerHTML; */

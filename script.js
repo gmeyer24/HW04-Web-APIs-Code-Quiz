@@ -16,6 +16,18 @@ const quizQuestions = [
     options: ["string", "array", "var", "const"],
     answer: "var",
   },
+  {
+    question: "How can a datatype be declared to be a constant type?",
+    options: ["const", "let", "var", "string"],
+    answer: "const",
+  },
+
+  {
+    question: "What type of language is JavaScript?",
+    options: ["object-oriented", "object-base", "assembly", "english"],
+    answer: "const",
+  },
+
   // add more questions here with the same format
 ];
 
@@ -23,9 +35,8 @@ const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
 const startButtonEl = document.getElementById("startButton");
 const endGameEl = document.getElementById("endGame");
-// const scoreBox = document.getElementById("scoreBox");
 const submitButtonEl = document.getElementById("submit");
-const playAgainsubmiButtonEl = document.getElementById("playAgain");
+const playAgainButtonEl = document.getElementById("playAgain");
 const timerDisplay = document.getElementById("timer-display");
 const timeLimitInSeconds = 60;
 
@@ -36,7 +47,7 @@ var score = 0;
 var currentQuestion = 0;
 
 endGameEl.setAttribute("class", "hide");
-playAgainsubmiButtonEl.setAttribute("class", "hide");
+playAgainButtonEl.setAttribute("class", "hide");
 
 // start quiz
 function startQuiz() {
@@ -72,6 +83,11 @@ function timeOut() {
 // pickcurrentQuestion - use random generator Math.random
 function loadQuestion() {
   if (currentQuestion >= quizQuestions.length) {
+    // Display "Restart Quiz" button
+    var playAgainButton = document.createElement("button");
+    playAgainButton.textContent = "Play Again";
+    playAgainButton.addEventListener("click", playAgain);
+    optionsEl.appendChild(playAgainButton);
     displayScore();
     return;
   }
@@ -90,18 +106,26 @@ function loadQuestion() {
 // check for correct
 // else wrong
 function selectOption(event) {
-  var selectedOption = event.target.innerHTML;
+  var selectedButton = event.target;
+  var selectedOption = selectedButton.textContent;
   console.log(selectedOption);
+  var feedback = document.createElement("div");
   if (selectedOption === quizQuestions[currentQuestion].answer) {
+    feedback.textContent = "Correct!";
     console.log("correct");
+    // show answer is correct
+
     score++;
   } else {
     console.log("incorrect");
+    // show answer is incorrect
+
     // subtrack time for wrong answer, 10 sec
     timeRemaining -= 10;
     // make sure time doesn't go below 0
     timeRemaining = Math.max(0, timeRemaining);
   }
+
   currentQuestion++;
   optionsEl.innerHTML = "";
   loadQuestion();
@@ -127,13 +151,13 @@ function submitScore(event) {
   console.log(score);
 
   var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
-  highscores.push({ initials: initialsInput, score: score});
+  highscores.push({ initials: initialsInput, score: score });
   localStorage.setItem("highscores", JSON.stringify(highscores));
 
   endGameEl.setAttribute("class", "hide");
-  playAgainsubmiButtonEl.setAttribute("class", "visible");
+  playAgainButtonEl.setAttribute("class", "visible");
 
-  // redirect to highscores page if you make this active 
+  // redirect to highscores page if you make this active
   // window.location.href = "highscores.html";
 }
 
@@ -143,16 +167,14 @@ function playAgain(event) {
   currentQuestion = 0;
   timeRemaining = timeLimitInSeconds;
   clearInterval(timerInterval);
+  optionsEl.innerHTML = "";
   endGameEl.setAttribute("class", "hide");
-  playAgainsubmiButtonEl.setAttribute("class", "hide");
+  playAgainButtonEl.setAttribute("class", "hide");
   startButtonEl.setAttribute("class", "visible");
   loadQuestion();
   startTimer();
   console.log("Play Again");
 }
-
-
-// create the timer and high score tracker - localstorage
 
 startButtonEl.addEventListener("click", startQuiz);
 
@@ -160,7 +182,7 @@ optionsEl.addEventListener("click", selectOption);
 
 submitButtonEl.addEventListener("click", submitScore);
 
-playAgainsubmiButtonEl.addEventListener("click", playAgain);
+playAgainButtonEl.addEventListener("click", playAgain);
 
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
@@ -175,8 +197,6 @@ playAgainsubmiButtonEl.addEventListener("click", playAgain);
 
 // TO DO:
 // make game start over
-// log score to local storage and to new highscore page
-// add timer and every wrong question take away 10 secs
 // show if answer is right or wrong when guessing
 // css sheet
 // readme doc
