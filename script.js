@@ -28,7 +28,7 @@ const quizQuestions = [
     answer: "const",
   },
 
-  // add more questions here with the same format
+  // add more questions here with the same format if I want
 ];
 
 const questionEl = document.getElementById("question");
@@ -51,8 +51,8 @@ playAgainButtonEl.setAttribute("class", "hide");
 
 // start quiz
 function startQuiz() {
-  var currentQuestion = 0;
-  var score = 0;
+  currentQuestion = 0;
+  score = 0;
   startButtonEl.setAttribute("class", "hide");
   timerDisplay.textContent = timeRemaining;
   loadQuestion();
@@ -79,15 +79,16 @@ function timeOut() {
   displayScore();
 }
 
-// need to create functions and methods
-// pickcurrentQuestion - use random generator Math.random
+// pickcurrentQuestion
 function loadQuestion() {
   if (currentQuestion >= quizQuestions.length) {
-    // Display "Restart Quiz" button
-    var playAgainButton = document.createElement("button");
-    playAgainButton.textContent = "Play Again";
-    playAgainButton.addEventListener("click", playAgain);
-    optionsEl.appendChild(playAgainButton);
+    questionEl.textContent = "";
+    optionsEl.innerHTML = "";
+    // Display "Play Again" button
+    // var playAgainButton = document.createElement("button");
+    playAgainButtonEl.textContent = "Play Again";
+    playAgainButtonEl.addEventListener("click", playAgain);
+    optionsEl.appendChild(playAgainButtonEl);
     displayScore();
     return;
   }
@@ -130,22 +131,22 @@ function selectOption(event) {
 
   // Disable button clicks after selecting an option
   var buttons = document.querySelectorAll("#options button");
-    buttons.forEach(function(button) {
-        button.disabled = true;
-    });
+  buttons.forEach(function (button) {
+    button.disabled = true;
+  });
 
-    // Delay for a few seconds before moving to the next question or ending the quiz
-    setTimeout(function() {
-      optionsEl.removeChild(feedback); // Remove the feedback
-      currentQuestion++;
-      optionsEl.innerHTML = ""; // Clear the options container
-      loadQuestion(); // Load the next question or end the quiz
+  // Delay for a few seconds before moving to the next question or ending the quiz
+  setTimeout(function () {
+    optionsEl.removeChild(feedback); // Remove the feedback
+    currentQuestion++;
+    optionsEl.innerHTML = ""; // Clear the options container
+    loadQuestion(); // Load the next question or end the quiz
   }, 2000); // 2000 milliseconds (2 seconds) delay before moving to the next question
 }
 
-  // currentQuestion++;
-  // optionsEl.innerHTML = "";
-  // loadQuestion();
+// currentQuestion++;
+// optionsEl.innerHTML = "";
+// loadQuestion();
 
 // display final score and enter initials - stores high score in local storage
 function displayScore() {
@@ -187,8 +188,9 @@ function playAgain(event) {
   endGameEl.setAttribute("class", "hide");
   playAgainButtonEl.setAttribute("class", "hide");
   startButtonEl.setAttribute("class", "visible");
-  loadQuestion();
-  startTimer();
+  startQuiz();
+  // loadQuestion();
+  // startTimer();
   console.log("Play Again");
 }
 
