@@ -84,11 +84,6 @@ function loadQuestion() {
   if (currentQuestion >= quizQuestions.length) {
     questionEl.textContent = "";
     optionsEl.innerHTML = "";
-    // Display "Play Again" button
-    // var playAgainButton = document.createElement("button");
-    // playAgainButtonEl.textContent = "Play Again";
-    // playAgainButtonEl.addEventListener("click", playAgain);
-    // optionsEl.appendChild(playAgainButtonEl);
     displayScore();
     return;
   }
@@ -143,11 +138,6 @@ function selectOption(event) {
   }, 2000); // 2000 milliseconds (2 seconds) delay before moving to the next question
 }
 
-// REMOVE BELOW?
-// currentQuestion++;
-// optionsEl.innerHTML = "";
-// loadQuestion();
-
 // display final score and enter initials - stores high score in local storage
 function displayScore() {
   clearInterval(timerInterval);
@@ -185,7 +175,9 @@ function playAgain(event) {
   score = 0;
   timeRemaining = timeLimitInSeconds;
   clearInterval(timerInterval);
-  console.log('Current Question: ${currentQuestion}, Score: ${score}, Time Remaining: ${timeRemaining}');
+  console.log(
+    "Current Question: ${currentQuestion}, Score: ${score}, Time Remaining: ${timeRemaining}"
+  );
   optionsEl.innerHTML = "";
   endGameEl.setAttribute("class", "hide");
   playAgainButtonEl.setAttribute("class", "hide");
@@ -214,5 +206,3 @@ playAgainButtonEl.addEventListener("click", playAgain);
 // WHEN the game is over
 // THEN I can save my initials and my score
 
-// TO DO:
-// make game start over
