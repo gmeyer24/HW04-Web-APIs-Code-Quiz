@@ -1,5 +1,9 @@
 * {
-  margin: ;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -18,39 +22,48 @@ header {
   padding: 2em;
   background-color: aqua;
   width: 100%;
+  position: relative;
+  top: 0;
 }
 
 #viewScore {
   position: absolute;
-  left: 10%;
-  font-size: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5em;
+  left: 10px;
 }
 
 #timer {
   position: absolute;
-  right: 10%;
-  font-size: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5em;
+  right: 10px;
 }
 
 .quizBox {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  flex-direction: column;
+  width: 80%;
   text-align: center;
   background-color: aqua;
-  height: 300px;
-  padding: 1em;
+  height: 60vh;
+  padding: 2em;
   border: 2px black solid;
-  position: absolute;
-  left: 25%;
-  bottom: 25%;
+  /* adds scrolling if text overflows */
+  overflow: auto;
+  margin: 0 auto;
+  margin-top: 2.5em;
 }
 
 #question {
   font-weight: bold;
-  font-size: 25px;
-  text-align: center;
+  font-size: 2em;
+  max-width: 100%;
+  margin-bottom: 1em;
 }
 
 button {
@@ -61,29 +74,20 @@ button {
   text-align: center;
   cursor: pointer;
   margin: 0.5em;
-  display: inline-block;
-  font-size: 20px;
+  font-size: 1.5em;
 }
 
 button:hover {
   color: aqua;
 }
 
-#summaryTitle {
-  font-size: 50px;
-}
-
-#scoreBox {
-  font-size: 25px;
-  line-height: 3em;
-}
-
-#initials {
-  font-size: 20px;
-}
-
+#summaryTitle,
+#scoreBox,
+#initials,
 #submit {
-  font-size: 20px;
+  font-size: 1.5em;
+  max-width: 100%;
+  margin-bottom: 1em;
 }
 
 footer {
@@ -91,9 +95,6 @@ footer {
   padding: 1em;
   text-align: center;
   bottom: 0;
-  left: 0;
-  position: absolute;
+  position: fixed;
   width: 100%;
 }
-
-/* var selectedOption = event.target.innerHTML; */

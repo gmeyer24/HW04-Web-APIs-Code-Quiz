@@ -86,6 +86,8 @@ The objective of this project was to build a timed coding quiz that contains mul
 
 [![JavaScript Quiz Deployed Link][product-screenshot]](https://gmeyer24.github.io/HW04-Web-APIs-Code-Quiz/)
 
+![Alt text](Images/screencapture-127-0-0-1-5500-index-html-2023-10-29-18_52_10.png)
+
 <!-- Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `gmeyer24`, `HW04-Web-APIs-Code-Quiz`, `twitter_handle`, `gavinpmeyer`, `gmail`, `gpmeyer24`, `HW04-Web-APIs-Code-Quiz`, `project_description` -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -136,6 +138,31 @@ This is an example of how to list things you need to use the software and how to
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+
+- To start the game, select the "START" button. You will have 30 seconds to complete the quiz.
+
+![Alt text](Images/image.png)
+
+- Answer each multiple choice question by clicking on the answer you believe to be correct. If correct, it will say below the options and then load the next question 2 seconds later. If wrong, if will say below the options as well and load the next question, but you will be penalized and lose 10 seconds on the timer. 
+
+![Alt text](Images/image-1.png)
+
+- Example of a question with alert if you got it right or wrong 
+
+![!\[Alt text\](image.png)](Images/image-2.png)
+
+- The game is over whenever you answer all of the questions or if the time runs out to do so. When the game ends because you answered all of the questions before the time runs out, the below "Game Summary" screen will automatically load. Please put your initials in the click "Submit." This will log your scores in the Highscores page.
+
+![Alt text](Images/image-3.png)
+
+- When the game comes to an end because you ran out of time, an alert pops up letting you know. Please select "OK" to advance and follow the same instructions above.
+
+![Alt text](Images/image-4.png)
+
+-If you click on the "View Highscores" link at the top of the page. The below Page will load.
+
+![Alt text](Images/image-5.png)
+
 
 
 

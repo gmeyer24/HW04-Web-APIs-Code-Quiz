@@ -25,7 +25,7 @@ const quizQuestions = [
   {
     question: "What type of language is JavaScript?",
     options: ["object-oriented", "object-base", "assembly", "english"],
-    answer: "const",
+    answer: "object-base",
   },
 
   // add more questions here with the same format if I want
@@ -38,8 +38,8 @@ const endGameEl = document.getElementById("endGame");
 const submitButtonEl = document.getElementById("submit");
 const playAgainButtonEl = document.getElementById("playAgain");
 const timerDisplay = document.getElementById("timer-display");
-const timeLimitInSeconds = 30;
 
+var timeLimitInSeconds = 30;
 var timeRemaining = timeLimitInSeconds;
 var timerInterval;
 
@@ -53,8 +53,8 @@ playAgainButtonEl.setAttribute("class", "hide");
 function startQuiz() {
   currentQuestion = 0;
   score = 0;
-  startButtonEl.setAttribute("class", "hide");
   timerDisplay.textContent = timeRemaining;
+  startButtonEl.setAttribute("class", "hide");
   loadQuestion();
   startTimer();
   console.log("Start Quiz");
@@ -86,9 +86,9 @@ function loadQuestion() {
     optionsEl.innerHTML = "";
     // Display "Play Again" button
     // var playAgainButton = document.createElement("button");
-    playAgainButtonEl.textContent = "Play Again";
-    playAgainButtonEl.addEventListener("click", playAgain);
-    optionsEl.appendChild(playAgainButtonEl);
+    // playAgainButtonEl.textContent = "Play Again";
+    // playAgainButtonEl.addEventListener("click", playAgain);
+    // optionsEl.appendChild(playAgainButtonEl);
     displayScore();
     return;
   }
@@ -113,10 +113,9 @@ function selectOption(event) {
 
   var feedback = document.createElement("div");
   if (selectedOption === quizQuestions[currentQuestion].answer) {
-    feedback.textContent = "Correct!";
     console.log("correct");
     // show answer is correct
-
+    feedback.textContent = "Correct!";
     score++;
   } else {
     console.log("incorrect");
@@ -144,6 +143,7 @@ function selectOption(event) {
   }, 2000); // 2000 milliseconds (2 seconds) delay before moving to the next question
 }
 
+// REMOVE BELOW?
 // currentQuestion++;
 // optionsEl.innerHTML = "";
 // loadQuestion();
@@ -180,18 +180,19 @@ function submitScore(event) {
 
 function playAgain(event) {
   event.preventDefault();
-  score = 0;
+  console.log("Play Again");
   currentQuestion = 0;
+  score = 0;
   timeRemaining = timeLimitInSeconds;
   clearInterval(timerInterval);
+  console.log('Current Question: ${currentQuestion}, Score: ${score}, Time Remaining: ${timeRemaining}');
   optionsEl.innerHTML = "";
   endGameEl.setAttribute("class", "hide");
   playAgainButtonEl.setAttribute("class", "hide");
   startButtonEl.setAttribute("class", "visible");
-  startQuiz();
+  // startQuiz();
   // loadQuestion();
-  // startTimer();
-  console.log("Play Again");
+  location.reload();
 }
 
 startButtonEl.addEventListener("click", startQuiz);
@@ -215,4 +216,3 @@ playAgainButtonEl.addEventListener("click", playAgain);
 
 // TO DO:
 // make game start over
-// readme doc
